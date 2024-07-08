@@ -5,27 +5,53 @@
 
 AddStudentWindow::AddStudentWindow(QWidget *parent)
     : QWidget(parent),
+    headLabel1(new QLabel("A D D  S T U D E N T", this)),
+    label1(new QLabel("NAME", this)),
+    label2(new QLabel("ROLL NO", this)),
+    label3(new QLabel("ADDRESS", this)),
+    label4(new QLabel("UNIQUE PIN CODE", this)),
     nameEdit(new QLineEdit(this)),
     rollNumberEdit(new QLineEdit(this)),
     addressEdit(new QLineEdit(this)),
     uniquePinCodeEdit(new QLineEdit(this)),
     saveButton(new QPushButton("Save", this)) {
-
-    QVBoxLayout *layout = new QVBoxLayout(this);
-    nameEdit->setPlaceholderText("Enter Student Name");
-    rollNumberEdit->setPlaceholderText("Enter Student Roll Number");
-    addressEdit->setPlaceholderText("Enter Student Address");
-    uniquePinCodeEdit->setPlaceholderText("Enter Unique Pin Code");
-    layout->addWidget(nameEdit);
-    layout->addWidget(rollNumberEdit);
-    layout->addWidget(addressEdit);
-    layout->addWidget(uniquePinCodeEdit);
-    layout->addWidget(saveButton);
-
+    this->setStyleSheet("background-color:#051A50; color:#FFFFFF;");
+    QString labelstyle="font-size: 9px; font-weight:600;color:#FFFFFF; background-color:transparent;";
+    QString inputstyle="background-color:#030E2C; border-radius:0px;padding: 5px;font-size: 12px; color: #FFFFF;";
+   // QVBoxLayout *layout = new QVBoxLayout(this);
+    // nameEdit->setPlaceholderText("Enter Student Name");
+    // rollNumberEdit->setPlaceholderText("Enter Student Roll Number");
+    // addressEdit->setPlaceholderText("Enter Student Address");
+    // uniquePinCodeEdit->setPlaceholderText("Enter Unique Pin Code");
+    // layout->addWidget(nameEdit);
+    // layout->addWidget(rollNumberEdit);
+    // layout->addWidget(addressEdit);
+    // layout->addWidget(uniquePinCodeEdit);
+    // layout->addWidget(saveButton);
+    headLabel1->setGeometry(125,21,150,21);
+    headLabel1->setStyleSheet("font-size: 12px; font-weight:600;color:#FFFFFF; background-color:transparent;");
+    label1->setGeometry(59,60,183,11);
+    label2->setGeometry(59,110,183,11);
+    label3->setGeometry(59,160,183,11);
+    label4->setGeometry(59,210,183,11);
+    label1->setStyleSheet(labelstyle);
+    label2->setStyleSheet(labelstyle);
+    label3->setStyleSheet(labelstyle);
+    label4->setStyleSheet(labelstyle);
+    saveButton->setGeometry(208,270,111,34);
+    nameEdit->setGeometry(59,76,190,25);
+    rollNumberEdit->setGeometry(59,126,190,25);
+    addressEdit->setGeometry(59,176,190,25);
+    uniquePinCodeEdit->setGeometry(59,226,190,25);
+    nameEdit->setStyleSheet(inputstyle);
+    rollNumberEdit->setStyleSheet(inputstyle);
+    addressEdit->setStyleSheet(inputstyle);
+    uniquePinCodeEdit->setStyleSheet(inputstyle);
+    saveButton->setStyleSheet(loginbtn);
     connect(saveButton, &QPushButton::clicked, this, &AddStudentWindow::onSaveButtonClicked);
 
-    setLayout(layout);
-    resize(300, 200);
+   // setLayout(layout);
+    setFixedSize(400, 320);
     setWindowTitle("Add Student");
 }
 

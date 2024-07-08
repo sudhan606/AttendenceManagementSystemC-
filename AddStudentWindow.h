@@ -7,6 +7,8 @@
 #include <QVBoxLayout>
 #include <QMessageBox>
 #include "Student.h"
+#include<QLabel>
+#include "style.h"
 
 class AddStudentWindow : public QWidget {
     Q_OBJECT
@@ -23,6 +25,11 @@ private:
     QLineEdit *addressEdit;
     QLineEdit *uniquePinCodeEdit;
     QPushButton *saveButton;
+     QLabel *headLabel1;
+    QLabel *label1;
+     QLabel *label2;
+     QLabel *label3;
+      QLabel *label4;
     bool isStudentExists(const QString &rollNumber, const QString &uniquePinCode);
     void saveStudent(const Student &student);
 };

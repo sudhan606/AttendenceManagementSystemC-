@@ -38,6 +38,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         ChangePasswordWindow.h
         ChangePasswordWindow.cpp
         Attendance.h
+        style.cpp
+        style.h
 
 
 
