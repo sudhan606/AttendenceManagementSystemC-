@@ -17,6 +17,7 @@ AdminWindow::AdminWindow(const QString &username, QWidget *parent)
 
     connect(addStudentButton, &QPushButton::clicked, this, &AdminWindow::openAddStudentWindow);
     connect(viewAttendanceDetailButton, &QPushButton::clicked, this, &AdminWindow::openViewAttendanceWindow);
+    connect(changeLoginPasswordButton, &QPushButton::clicked, this, &AdminWindow::openChangePasswordWindow);
     connect(logoutButton, &QPushButton::clicked, this, &AdminWindow::logout);
 
     setLayout(layout);
@@ -32,6 +33,10 @@ void AdminWindow::openAddStudentWindow() {
 void AdminWindow::openViewAttendanceWindow() {
     ViewAttendanceWindow *viewAttendanceWindow = new ViewAttendanceWindow();
     viewAttendanceWindow->show();
+}
+void AdminWindow::openChangePasswordWindow(){
+    ChangePasswordWindow *changePasswordWindow=new ChangePasswordWindow();
+    changePasswordWindow->show();
 }
 void AdminWindow::logout() {
     QMessageBox::information(this, "Logout", "Logged Out Successfully");

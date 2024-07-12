@@ -17,3 +17,5 @@ QString loginbtn=R"(QPushButton{
                     background-color:#f25194;}
                     QPushButton:pressed{
                     color:#0048ff})";
+QString labelstyle="font-size: 11px; font-weight:600;color:#FFFFFF; background-color:transparent;";
+QString inputstyle="background-color:#030E2C; border-radius:0px;padding: 5px;font-size: 12px; color: #FFFFF;";

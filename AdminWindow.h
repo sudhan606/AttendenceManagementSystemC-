@@ -6,6 +6,7 @@
 #include <QVBoxLayout>
 #include "ViewAttendanceWindow.h"
 #include "AddStudentWindow.h"
+#include"ChangePasswordWindow.h"
 
 class AdminWindow : public QWidget {
     Q_OBJECT
@@ -17,6 +18,7 @@ public:
 private slots:
     void openViewAttendanceWindow();
     void openAddStudentWindow();
+    void openChangePasswordWindow();
     void logout();
     // Add other slots for handling different admin functions as required
 

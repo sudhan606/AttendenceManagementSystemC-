@@ -5,4 +5,6 @@
 #include <QDataStream>
 extern QString attbtn;
 extern QString loginbtn;
+extern QString labelstyle;
+extern QString inputstyle;
 #endif // STYLE_H

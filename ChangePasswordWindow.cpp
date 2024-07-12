@@ -39,16 +39,16 @@ void ChangePasswordWindow::onChangePasswordButtonClicked() {
         QMessageBox::warning(this, "Input Error", "All fields are required.");
         return;
     }
-
+    if (!authenticateUser(username, currentPassword)) {
+        QMessageBox::warning(this, "Authentication Failed", "Invalid username or password.");
+        return;
+    }
     if (newPassword != confirmPassword) {
         QMessageBox::warning(this, "Password Mismatch", "New password and confirm password do not match.");
         return;
     }
 
-    if (!authenticateUser(username, currentPassword)) {
-        QMessageBox::warning(this, "Authentication Failed", "Invalid username or password.");
-        return;
-    }
+
 
     saveNewPassword(newPassword);
 
@@ -59,11 +59,38 @@ void ChangePasswordWindow::onChangePasswordButtonClicked() {
 bool ChangePasswordWindow::authenticateUser(const QString &username, const QString &password) {
     // Implement your authentication logic here, e.g., check against a database or hardcoded values
     // For demonstration purposes, let's assume username "admin" and password "admin" are valid
-    return (username == "admin" && password == "admin");
+    QFile file("password.dat");
+    if (!file.open(QIODevice::ReadOnly)) {
+        return false; // Assuming file does not exist means no duplicates
+    }
+
+    QDataStream in(&file);
+    login tempLogin;
+    tempLogin.load(in);
+    if(tempLogin.userName==username&&tempLogin.password==password)
+    {
+        file.close();
+        return true;
+    }
+    file.close();
+    return false;
+
 }
 
 void ChangePasswordWindow::saveNewPassword(const QString &newPassword) {
     // Implement code to save the new password, e.g., update database or file
     // For demonstration purposes, let's assume we update the password directly here
     // Note: In a real application, you should securely hash and store passwords
+    login loginPassword;
+    loginPassword.password=newPassword;
+    loginPassword.userName="p";
+    QFile file("password.dat");
+    if (!file.open(QIODevice::WriteOnly)) {
+        QMessageBox::warning(this, "File Error", "Unable to open file for writing.");
+        return;
+    }
+
+    QDataStream out(&file);
+    loginPassword.save(out);
+    file.close();
 }

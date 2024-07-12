@@ -30,6 +30,7 @@ private:
      QLabel *label2;
      QLabel *label3;
       QLabel *label4;
+     QLabel *imageLabel;
     bool isStudentExists(const QString &rollNumber, const QString &uniquePinCode);
     void saveStudent(const Student &student);
 };

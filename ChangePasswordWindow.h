@@ -5,6 +5,8 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <QMessageBox>
+#include <QDataStream>
+#include "Password.h"
 
 class ChangePasswordWindow : public QWidget {
     Q_OBJECT
