@@ -2,13 +2,14 @@
 #include "MainWindow.h"
 #include "AddStudentWindow.h"
 #include "LoginWindow.h"
+#include "AdminWindow.h"
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
 
     MainWindow mainWindow;
     mainWindow.show();
-    LoginWindow addstwin;
-   addstwin.show();
+   //  AdminWindow addstwin;
+   // addstwin.show();
 
     return app.exec();
 }

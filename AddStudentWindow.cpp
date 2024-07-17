@@ -16,7 +16,8 @@ AddStudentWindow::AddStudentWindow(QWidget *parent)
     addressEdit(new QLineEdit(this)),
     uniquePinCodeEdit(new QLineEdit(this)),
     saveButton(new QPushButton("Save", this)) {
-    this->setStyleSheet("background-color:#051A50; color:#FFFFFF;");
+   // this->setObjectName("mainWindow");
+    this->setStyleSheet(winstyle);
     // QString labelstyle="font-size: 9px; font-weight:600;color:#FFFFFF; background-color:transparent;";
     // QString inputstyle="background-color:#030E2C; border-radius:0px;padding: 5px;font-size: 12px; color: #FFFFF;";
    // QVBoxLayout *layout = new QVBoxLayout(this);

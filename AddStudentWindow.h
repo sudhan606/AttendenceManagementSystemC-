@@ -9,7 +9,7 @@
 #include "Student.h"
 #include<QLabel>
 #include "style.h"
-
+extern QString winstyle;
 class AddStudentWindow : public QWidget {
     Q_OBJECT
 

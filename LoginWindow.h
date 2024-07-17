@@ -22,7 +22,7 @@ private slots:
 
 private:
     QLabel *heading;
-    QLabel *label1,*label2,*imageLabel;
+    QLabel *label1,*label2,*imageLabel,*imageLabel1;
     QLineEdit *usernameEdit;
     QLineEdit *passwordEdit;
     QPushButton *loginButton;

@@ -8,6 +8,7 @@
 #include<QLabel>
 #include <QPixmap>
 #include <QPainter>
+#include <QTimer>
 #include"style.h"
 #include "AddStudentWindow.h"
 
@@ -21,6 +22,7 @@ public:
 private slots:
     void openPinCodeWindow();
     void openLoginWindow();
+    void updateDateTime();
 protected:
     void paintEvent(QPaintEvent *event) override;
 private:
@@ -30,6 +32,8 @@ private:
     QLabel *headingLabel2;
     QLabel *imageLabel;
     QLabel *imageLabel1;
+    QLabel *time;
+    QTimer *timer;
 };
 
 #endif // MAINWINDOW_H

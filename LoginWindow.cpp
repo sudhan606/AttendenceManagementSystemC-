@@ -8,17 +8,18 @@ LoginWindow::LoginWindow(QWidget *parent)
     label1(new QLabel("USERNAME",this)),
     label2(new QLabel("PASSWORD",this)),
     imageLabel(new QLabel(this)),
+     imageLabel1(new QLabel(this)),
     usernameEdit(new QLineEdit(this)),
     passwordEdit(new QLineEdit(this)),
     loginButton(new QPushButton("Login", this)),
     adminWindow(nullptr) {
-    this->setStyleSheet("background-color:#051A50; color:#FFFFFF;");
+    this->setStyleSheet(winstyle);
    // QVBoxLayout *layout = new QVBoxLayout(this);
     //usernameEdit->setPlaceholderText("Enter Username");
     // passwordEdit->setPlaceholderText("Enter Password");
     passwordEdit->setEchoMode(QLineEdit::Password);
-   heading->setGeometry(130,21,175,25);
-   heading->setStyleSheet("font-size: 18px; font-weight:600;color:#FFFFFF; background-color:transparent;");
+   heading->setGeometry(140,30,175,25);
+   heading->setStyleSheet("font-size: 18px; font-weight:700;color:#FFFFFF; background-color:transparent;");
    label1->setGeometry(85,100,183,11);
    label2->setGeometry(85,150,183,11);
    usernameEdit->setGeometry(85,116,190,25);
@@ -37,7 +38,12 @@ LoginWindow::LoginWindow(QWidget *parent)
     // layout->addWidget(usernameEdit);
     // layout->addWidget(passwordEdit);
     // layout->addWidget(loginButton);
-
+  QPixmap pixmap1("C:/Users/HP/Documents/att/pic2.png");  // Load the c logo
+  int newWidthHeigt = 50; // Desired width
+  //int newHeight = 40; // Desired height
+  //QPixmap scaledPixmap = pixmap.scaled(newWidth, newHeight, Qt::KeepAspectRatio);  // Scale the pixmap
+  imageLabel1->setPixmap(pixmap1);  // Set the scaled pixmap on the label
+  imageLabel1->setGeometry(30, 10,  newWidthHeigt,  newWidthHeigt); // Position and size the label
     connect(loginButton, &QPushButton::clicked, this, &LoginWindow::onLoginButtonClicked);
 
     //setLayout(layout);

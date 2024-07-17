@@ -9,11 +9,16 @@ MainWindow::MainWindow(QWidget *parent)
     headingLabel(new QLabel("A T T E N D E R", this)),
    headingLabel2(new QLabel("STUDENT ATTENDANCE MANAGEMENT\nSYSTEM", this)),
 imageLabel(new QLabel(this)),
+time(new QLabel(this)),
+    timer(new QTimer(this)),
 imageLabel1(new QLabel(this))
 {
     //QString attbtn,loginbtn;
-     this->setStyleSheet("background-color:#051A50; color:#FFFFFF;");
+     this->setStyleSheet("QMainWindow {background-color:#051A50;} color:#FFFFFF;");
+
    headingLabel->setGeometry(50,138, 219, 39); // Position and size
+     time->setGeometry(549,12,180,39);
+   time->setStyleSheet("font-size:16; font-weight:600; background-color:transparent;");
     //headingLabel->setAlignment(Qt::AlignCenter); // Ce
    headingLabel->setStyleSheet("font-size: 25px; font-weight:600;color:#FFFFFF; background-color:transparent;");
    headingLabel2->setGeometry(50, 184, 270, 32);
@@ -51,6 +56,9 @@ imageLabel1(new QLabel(this))
    //imageLabel->setStyleSheet("transform:scale(2);");
     connect(attendanceEntryButton, &QPushButton::clicked, this, &MainWindow::openPinCodeWindow);
     connect(adminLoginButton, &QPushButton::clicked, this, &MainWindow::openLoginWindow);
+    connect(timer, &QTimer::timeout, this, &MainWindow::updateDateTime);
+    timer->start(1000); // Update every second
+    updateDateTime();
     // Set the size of the main window
     setFixedSize(700, 500); // Width: 800, Height: 600
     setWindowTitle("BCT CD Attendance System");
@@ -81,4 +89,8 @@ void MainWindow::openPinCodeWindow() {
 void MainWindow::openLoginWindow() {
     LoginWindow *loginWindow = new LoginWindow();
     loginWindow->show();
+}
+void MainWindow::updateDateTime() {
+    QString currentDateTime = QDateTime::currentDateTime().toString("yyyy-MM-dd\nh:mm:ss AP");
+    time->setText(currentDateTime);
 }

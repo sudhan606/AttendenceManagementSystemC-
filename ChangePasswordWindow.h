@@ -7,6 +7,8 @@
 #include <QMessageBox>
 #include <QDataStream>
 #include "Password.h"
+#include"style.h"
+#include<QLabel>
 
 class ChangePasswordWindow : public QWidget {
     Q_OBJECT
@@ -23,9 +25,15 @@ private:
     QLineEdit *newPasswordEdit;
     QLineEdit *confirmPasswordEdit;
     QPushButton *changePasswordButton;
-
+    QLabel *headLabel1;
+    QLabel *label1;
+    QLabel *label2;
+    QLabel *label3;
+    QLabel *label4;
+    QLabel *imageLabel, *imageLabel1;
     bool authenticateUser(const QString &username, const QString &password);
     void saveNewPassword(const QString &newPassword);
+    void run();
 };
 
 #endif // CHANGEPASSWORDWINDOW_H
