@@ -8,7 +8,9 @@
 #include <QDateTime>
 #include <QMessageBox>
 #include<QDebug>
+#include<QLabel>
 #include "Student.h"
+#include"style.h"
 
 struct AttendanceRecord {
     QString rollNumber;
@@ -31,6 +33,7 @@ private slots:
 private:
     QLineEdit *pinCodeEdit;
     QPushButton *submitButton;
+    QLabel *headingLabel,*label1,*imageLabel,*imageLabel1;
 
     bool findStudentByPin(const QString &pinCode, QString &rollNumber, QString &name);
     void saveAttendanceRecord(const QString &rollNumber);

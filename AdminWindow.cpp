@@ -21,6 +21,36 @@ AdminWindow::AdminWindow(const QString &username, QWidget *parent)
     {  // Initialize member variable
     //this->setObjectName("mainWindow");
     this->setStyleSheet(winstyle);
+
+    run();//All styles are here
+    connect(addStudentButton, &QPushButton::clicked, this, &AdminWindow::openAddStudentWindow);
+    connect(viewAttendanceDetailButton, &QPushButton::clicked, this, &AdminWindow::openViewAttendanceWindow);
+    connect(changeLoginPasswordButton, &QPushButton::clicked, this, &AdminWindow::openChangePasswordWindow);
+    connect(logoutButton, &QPushButton::clicked, this, &AdminWindow::logout);
+
+    //setLayout(layout);
+    setFixedSize(400, 320);
+    setWindowTitle("Admin Functions");
+}
+
+void AdminWindow::openAddStudentWindow() {
+    AddStudentWindow *addStudentWindow = new AddStudentWindow();
+    addStudentWindow->show();
+}
+
+void AdminWindow::openViewAttendanceWindow() {
+    ViewAttendanceWindow *viewAttendanceWindow = new ViewAttendanceWindow();
+    viewAttendanceWindow->show();
+}
+void AdminWindow::openChangePasswordWindow(){
+    ChangePasswordWindow *changePasswordWindow=new ChangePasswordWindow();
+    changePasswordWindow->show();
+}
+void AdminWindow::logout() {
+    QMessageBox::information(this, "Logout", "Logged Out Successfully");
+    this->close();  // Close the AdminWindow
+}
+void AdminWindow::run(){
     headingLabel->setGeometry(162,17,70,20);
     headingLabel->setStyleSheet("font-size: 16px; font-weight:600;color:#FFFFFF; background-color:transparent;");
     addStudentButton->setGeometry(32,139,119,28);
@@ -71,31 +101,4 @@ AdminWindow::AdminWindow(const QString &username, QWidget *parent)
     // layout->addWidget(viewAttendanceDetailButton);
     // layout->addWidget(changeLoginPasswordButton);
     // layout->addWidget(logoutButton);
-
-    connect(addStudentButton, &QPushButton::clicked, this, &AdminWindow::openAddStudentWindow);
-    connect(viewAttendanceDetailButton, &QPushButton::clicked, this, &AdminWindow::openViewAttendanceWindow);
-    connect(changeLoginPasswordButton, &QPushButton::clicked, this, &AdminWindow::openChangePasswordWindow);
-    connect(logoutButton, &QPushButton::clicked, this, &AdminWindow::logout);
-
-    //setLayout(layout);
-    setFixedSize(400, 320);
-    setWindowTitle("Admin Functions");
-}
-
-void AdminWindow::openAddStudentWindow() {
-    AddStudentWindow *addStudentWindow = new AddStudentWindow();
-    addStudentWindow->show();
-}
-
-void AdminWindow::openViewAttendanceWindow() {
-    ViewAttendanceWindow *viewAttendanceWindow = new ViewAttendanceWindow();
-    viewAttendanceWindow->show();
-}
-void AdminWindow::openChangePasswordWindow(){
-    ChangePasswordWindow *changePasswordWindow=new ChangePasswordWindow();
-    changePasswordWindow->show();
-}
-void AdminWindow::logout() {
-    QMessageBox::information(this, "Logout", "Logged Out Successfully");
-    this->close();  // Close the AdminWindow
 }

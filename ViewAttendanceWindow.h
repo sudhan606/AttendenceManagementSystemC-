@@ -8,7 +8,9 @@
 #include "Student.h"
 #include "Attendance.h"
 #include <QDebug>
-
+#include<QLabel>
+#include<QComboBox>
+#include"style.h"
 class ViewAttendanceWindow : public QWidget {
     Q_OBJECT
 public:
@@ -18,9 +20,10 @@ private slots:
     void onViewButtonClicked();
 
 private:
-    QLineEdit *rollNumberEdit;
+    QLineEdit *rollNumberEdit,*yearEdit;
     QPushButton *viewButton;
-
+    QLabel *headingLabel,*label1,*label2,*label3,*imageLabel,*imageLabel1;
+    QComboBox *comboBox;
     bool readStudentDetails(const QString &rollNumber, Student &student, Attendance &attendance);
 };
 

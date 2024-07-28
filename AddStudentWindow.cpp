@@ -11,6 +11,7 @@ AddStudentWindow::AddStudentWindow(QWidget *parent)
     label3(new QLabel("ADDRESS", this)),
     label4(new QLabel("UNIQUE PIN CODE", this)),
     imageLabel(new QLabel(this)),
+    imageLabel1(new QLabel(this)),
     nameEdit(new QLineEdit(this)),
     rollNumberEdit(new QLineEdit(this)),
     addressEdit(new QLineEdit(this)),
@@ -55,6 +56,12 @@ AddStudentWindow::AddStudentWindow(QWidget *parent)
     imageLabel->setPixmap(pixmap);  // Set the scaled pixmap on the label
     imageLabel->setGeometry(255, -60, 298, 344); // Position and size the label
     imageLabel->setStyleSheet("background-color:transparent;");
+    QPixmap pixmap1("C:/Users/HP/Documents/att/pic2.png");  // Load the c logo
+    int newWidthHeigt = 50; // Desired width
+    //int newHeight = 40; // Desired height
+    //QPixmap scaledPixmap = pixmap.scaled(newWidth, newHeight, Qt::KeepAspectRatio);  // Scale the pixmap
+    imageLabel1->setPixmap(pixmap1);  // Set the scaled pixmap on the label
+    imageLabel1->setGeometry(30, 10,  newWidthHeigt,  newWidthHeigt); // Position and size the label
     connect(saveButton, &QPushButton::clicked, this, &AddStudentWindow::onSaveButtonClicked);
 
    // setLayout(layout);

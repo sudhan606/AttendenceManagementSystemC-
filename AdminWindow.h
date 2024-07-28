@@ -20,6 +20,7 @@ private slots:
     void openViewAttendanceWindow();
     void openAddStudentWindow();
     void openChangePasswordWindow();
+    void run();
     void logout();
     // Add other slots for handling different admin functions as required
 

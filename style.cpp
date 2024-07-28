@@ -65,3 +65,31 @@ QString winstyle=R"(QWidget{background-color:#051A50; color:#FFFFFF;}
     font-size:14px;
     font-weight:500;}
 )";
+QString winstyle1=R"(QWidget{background-color:#051A50; color:#FFFFFF;}
+ QMessageBox {
+        background-color: #051A50;
+ min-width: 4000px; /* Adjust width */
+        min-height: 25px; /* Adjust height */
+    }
+
+    QMessageBox QPushButton {
+                    background-color:#8852BE;
+                    color:#FFFFFF;
+                    font-size: 13px;
+                    border-radius: 10px;
+ min-width: 100px; /* Adjust width */
+        min-height: 25px; /* Adjust height */
+    }
+
+    QMessageBox QPushButton:hover {
+        background-color:#a170d2;
+    }
+
+    QMessageBox QPushButton:pressed {
+       color:#EE0F6C;
+    }
+    QMessageBox QLabel{
+    background-color:transparent;
+    font-size:14px;
+    font-weight:500;}
+)";
