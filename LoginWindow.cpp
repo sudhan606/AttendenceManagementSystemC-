@@ -74,7 +74,7 @@ bool LoginWindow::authenticateUser(QString &username, QString &password){
     QDataStream in(&file);
     login tempLogin;
     tempLogin.load(in);
-    qDebug()<<tempLogin.userName<<tempLogin.password;
+    //qDebug()<<tempLogin.userName<<tempLogin.password;
         if(tempLogin.userName==username&&tempLogin.password==password)
     {
         file.close();

@@ -99,7 +99,7 @@ void ChangePasswordWindow::saveNewPassword(const QString &newPassword) {
     // Note: In a real application, you should securely hash and store passwords
     login loginPassword;
     loginPassword.password=newPassword;
-    loginPassword.userName="p";
+    loginPassword.userName="admin";
     QFile file("password.dat");
     if (!file.open(QIODevice::WriteOnly)) {
         QMessageBox::warning(this, "File Error", "Unable to open file for writing.");

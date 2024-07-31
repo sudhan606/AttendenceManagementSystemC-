@@ -9,8 +9,8 @@ int main(int argc, char *argv[]) {
 
     MainWindow mainWindow;
     mainWindow.show();
-    ViewAttendanceWindow addstwin;
-   addstwin.show();
+   //  ViewAttendanceWindow addstwin;
+   // addstwin.show();
 
     return app.exec();
 }

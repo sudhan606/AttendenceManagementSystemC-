@@ -48,10 +48,10 @@ void PinCodeWindow::onSubmitButtonClicked() {
 
     QString rollNumber, name;
     if (findStudentByPin(pinCode, rollNumber, name)) {
-        saveAttendanceRecord(rollNumber);
+        saveAttendanceRecord(rollNumber,name);
         QDateTime currentDateTime = QDateTime::currentDateTime();
 
-        QMessageBox::information(this, "Attendance Recorded","Student Name: "+name+ "\nYou are present Today on:\nTime: "+QString::number(currentDateTime.time().hour())+":"+QString::number(currentDateTime.time().minute())+":"+QString::number(currentDateTime.time().second()));
+        // QMessageBox::information(this, "Attendance Recorded","Student Name: "+name+ "\nYou are present Today on:\nTime: "+QString::number(currentDateTime.time().hour())+":"+QString::number(currentDateTime.time().minute())+":"+QString::number(currentDateTime.time().second()));
         this->close();
     } else {
         QMessageBox::warning(this, "Error", "Invalid pin code. Student not found.");
@@ -81,25 +81,50 @@ bool PinCodeWindow::findStudentByPin(const QString &pinCode, QString &rollNumber
     return false;
 }
 
-void PinCodeWindow::saveAttendanceRecord(const QString &rollNumber) {
+void PinCodeWindow::saveAttendanceRecord(const QString &rollNumber,const QString &name) {
     QFile file("attendance.dat");
     if (!file.open(QIODevice::WriteOnly | QIODevice::Append)) {
         QMessageBox::warning(this, "File Error", "Failed to open attendance.dat file for writing.");
         return;
     }
+    if(!isattendanceexist(rollNumber)){
+        QDateTime currentDateTime = QDateTime::currentDateTime();
+        AttendanceRecord record;
+        record.rollNumber = rollNumber;
+        record.year = currentDateTime.date().year();
+        record.month = currentDateTime.date().month();
+        record.day = currentDateTime.date().day();
+        record.hour = currentDateTime.time().hour();
+        record.minute = currentDateTime.time().minute();
+        record.second = currentDateTime.time().second();
+        qDebug() << record.rollNumber << record.year << record.month << record.day << record.hour << record.minute << record.second;
+        QDataStream out(&file);
+        out << record.rollNumber << record.year << record.month << record.day << record.hour << record.minute << record.second;
 
-    QDateTime currentDateTime = QDateTime::currentDateTime();
-    AttendanceRecord record;
-    record.rollNumber = rollNumber;
-    record.year = currentDateTime.date().year();
-    record.month = currentDateTime.date().month();
-    record.day = currentDateTime.date().day();
-    record.hour = currentDateTime.time().hour();
-    record.minute = currentDateTime.time().minute();
-    record.second = currentDateTime.time().second();
-    qDebug() << record.rollNumber << record.year << record.month << record.day << record.hour << record.minute << record.second;
-    QDataStream out(&file);
-    out << record.rollNumber << record.year << record.month << record.day << record.hour << record.minute << record.second;
+        file.close();
+       QMessageBox::information(this, "Attendance Recorded","Student Name: "+name+ "\nYou are present Today on:\nTime: "+QString::number(currentDateTime.time().hour())+":"+QString::number(currentDateTime.time().minute())+":"+QString::number(currentDateTime.time().second()));
+    }
+    else {
+        QMessageBox::information(this, "Already Recorded", "Dear "+name+",\nYour attendance for today has already been recorded.");
+        return;
+    }
 
-    file.close();
+}
+bool PinCodeWindow::isattendanceexist(const QString &rollNumber){
+    QFile file1("attendance.dat");
+     QDateTime currentDateTime = QDateTime::currentDateTime();
+    if (!file1.open(QIODevice::ReadOnly)){
+        QMessageBox::warning(this, "File Error", "Unable to open file for reading.");
+        return true;
+    }
+    else{
+        QDataStream in1(&file1);
+        while (!in1.atEnd()) {
+            Attendance tattendance;
+            tattendance.load(in1);
+            if(tattendance.rollNumber==rollNumber&&currentDateTime.date().year()==tattendance.year&&currentDateTime.date().month()==tattendance.mon&&currentDateTime.date().day()==tattendance.day)
+                return true;
+            }
+        return false;
+}
 }

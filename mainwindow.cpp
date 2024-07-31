@@ -23,24 +23,7 @@ imageLabel1(new QLabel(this))
    headingLabel->setStyleSheet("font-size: 25px; font-weight:600;color:#FFFFFF; background-color:transparent;");
    headingLabel2->setGeometry(50, 184, 270, 32);
    headingLabel2->setStyleSheet("font-size: 13px; font-weight: 200; color:#E6E2E2;background-color:transparent;");
-   /*QString attbtn=R"(QPushButton{
-                    background-color:#8852BE;
-                    color:#FFFFFF;
-                    font-size: 13px;
-                    border-radius: 17px;}
-                    QPushButton:hover{
-                    background-color:#a170d2;}
-                    QPushButton:pressed{
-                    color:#EE0F6C;})";
-   QString loginbtn=R"(QPushButton{
-                    background-color:#EE0F6C;
-                    color:#FFFFFF;
-                    font-size: 13px;
-                    border-radius: 17px;}
-                    QPushButton:hover{
-                    background-color:#f25194;}
-                    QPushButton:pressed{
-                    color:#0048ff})";     ALL STYLE IS IN STYLE.cpp file*/
+   //ALL STYLE IS IN STYLE.cpp file*/
     attendanceEntryButton->setGeometry(50, 250, 97, 35);
      attendanceEntryButton->setStyleSheet(attbtn);
    adminLoginButton->setGeometry(161, 250, 97, 35);

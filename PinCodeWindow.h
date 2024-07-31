@@ -11,6 +11,7 @@
 #include<QLabel>
 #include "Student.h"
 #include"style.h"
+#include"Attendance.h"
 
 struct AttendanceRecord {
     QString rollNumber;
@@ -36,7 +37,8 @@ private:
     QLabel *headingLabel,*label1,*imageLabel,*imageLabel1;
 
     bool findStudentByPin(const QString &pinCode, QString &rollNumber, QString &name);
-    void saveAttendanceRecord(const QString &rollNumber);
+    bool isattendanceexist(const QString &rollNumber);
+    void saveAttendanceRecord(const QString &rollNumber,const QString &name);
 };
 
 #endif // PINCODEWINDOW_H
