@@ -44,7 +44,7 @@ imageLabel1(new QLabel(this))
     updateDateTime();
     // Set the size of the main window
     setFixedSize(700, 500); // Width: 800, Height: 600
-    setWindowTitle("BCT CD Attendance System");
+    setWindowTitle("ATTENDER");
 }
 
 MainWindow::~MainWindow() {}

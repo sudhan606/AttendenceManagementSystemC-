@@ -96,9 +96,5 @@ void AdminWindow::run(){
     label1->setStyleSheet("font-size: 10px; background-color:transparent;");
     label2->setStyleSheet("font-size: 10px;background-color:transparent;");
     label2->setGeometry(286,109,27,12);
-    // QVBoxLayout *layout = new QVBoxLayout(this);
-    // layout->addWidget(addStudentButton);
-    // layout->addWidget(viewAttendanceDetailButton);
-    // layout->addWidget(changeLoginPasswordButton);
-    // layout->addWidget(logoutButton);
+
 }

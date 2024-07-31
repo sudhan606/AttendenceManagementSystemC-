@@ -40,7 +40,7 @@ ViewAttendanceWindow::ViewAttendanceWindow(QWidget *parent)
         comboBox->addItem(month[i]);
     }
     comboBox->setItemData(0, false, Qt::ItemIsEnabled); // Disable "Select month"
-    qDebug()<<comboBox->currentIndex();
+    // qDebug()<<comboBox->currentIndex();
     QPixmap pixmap("C:/Users/HP/Documents/att/pic4.png");
     //int newWidthHeigt = 50; // Desired width
     imageLabel->setPixmap(pixmap);  // Set the scaled pixmap on the label
@@ -58,10 +58,10 @@ ViewAttendanceWindow::ViewAttendanceWindow(QWidget *parent)
 void ViewAttendanceWindow::onViewButtonClicked() {
     QString rollNumber = rollNumberEdit->text().trimmed();
     bool ok;
-    qDebug()<<(yearEdit->text().trimmed()).length();
+    // qDebug()<<(yearEdit->text().trimmed()).length();
     int year=(yearEdit->text().trimmed()).toInt(&ok);
     // Trimmed to remove any extra spaces
-    qDebug()<<year<<ok;
+    // qDebug()<<year<<ok;
     int month = comboBox->currentIndex();
 
     if (rollNumber.isEmpty()) {
@@ -117,7 +117,7 @@ void ViewAttendanceWindow::onViewButtonClicked() {
                             .arg(dates)
                             .arg(date);*/
             }
-            qDebug()<<dates;
+           // qDebug()<<dates;
 
         }
         if(dates.isEmpty())
@@ -133,11 +133,6 @@ void ViewAttendanceWindow::onViewButtonClicked() {
 
 bool ViewAttendanceWindow::readStudentDetails(const QString &rollNumber, Student &student, Attendance &attendance) {
     QFile file("students.dat");
-    // QFile file1("attendance.dat");
-    /*if (!file1.open(QIODevice::ReadOnly)){
-         QMessageBox::warning(this, "File Error", "Unable to open file for reading.");
-         return false;
-     }*/
     if (!file.open(QIODevice::ReadOnly)) {
         QMessageBox::warning(this, "File Error", "Unable to open file for reading.");
         return false;
@@ -155,18 +150,6 @@ bool ViewAttendanceWindow::readStudentDetails(const QString &rollNumber, Student
     }
 
     file.close();
-    /*int i=0;
-    QDataStream in1(&file1);
-    while (!in1.atEnd()) {
-        Attendance tattendance[100];
-        tattendance[i].load(in1);
-        if (tempStudent.rollNumber == rollNumber) {
-            student = tempStudent;
-            file.close();
-            return true;
-        }
-    }
 
-    file.close();*/
     return false;
 }

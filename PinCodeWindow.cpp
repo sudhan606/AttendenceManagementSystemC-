@@ -97,7 +97,7 @@ void PinCodeWindow::saveAttendanceRecord(const QString &rollNumber,const QString
         record.hour = currentDateTime.time().hour();
         record.minute = currentDateTime.time().minute();
         record.second = currentDateTime.time().second();
-        qDebug() << record.rollNumber << record.year << record.month << record.day << record.hour << record.minute << record.second;
+        // qDebug() << record.rollNumber << record.year << record.month << record.day << record.hour << record.minute << record.second;
         QDataStream out(&file);
         out << record.rollNumber << record.year << record.month << record.day << record.hour << record.minute << record.second;
 
@@ -123,8 +123,10 @@ bool PinCodeWindow::isattendanceexist(const QString &rollNumber){
             Attendance tattendance;
             tattendance.load(in1);
             if(tattendance.rollNumber==rollNumber&&currentDateTime.date().year()==tattendance.year&&currentDateTime.date().month()==tattendance.mon&&currentDateTime.date().day()==tattendance.day)
-                return true;
+                file1.close();
+            return true;
             }
+        file1.close();
         return false;
 }
 }
