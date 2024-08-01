@@ -1,6 +1,6 @@
 # ATTENDER
 
-The Students Attendance Management System is a robust application developed using C++ and Qt 6, designed to manage student attendance efficiently. The system has two main components: an attendance entry panel for students and an admin login panel for administrators.
+ATTENDER (A Students Attendance Management System) is a robust application developed using C++ and Qt 6, designed to manage student attendance efficiently. The system has two main components: an attendance entry panel for students and an admin login panel for administrators.
 
 ## Features
 
