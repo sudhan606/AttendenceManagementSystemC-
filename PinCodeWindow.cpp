@@ -13,8 +13,6 @@ PinCodeWindow::PinCodeWindow(QWidget *parent)
 {
     extern QString winstyle;
     this->setStyleSheet(winstyle);
-    // QVBoxLayout *layout = new QVBoxLayout(this);
-    // pinCodeEdit->setPlaceholderText("Enter Pin Code");
     pinCodeEdit->setEchoMode(QLineEdit::Password);
     headingLabel->setGeometry(140,30,175,25);
     headingLabel->setStyleSheet("font-size: 18px; font-weight:600;color:#FFFFFF; background-color:transparent;");
@@ -33,8 +31,6 @@ PinCodeWindow::PinCodeWindow(QWidget *parent)
     int newWidthHeigt = 50; // Desired width
     imageLabel1->setPixmap(pixmap1);  // Set the scaled pixmap on the label
     imageLabel1->setGeometry(30, 10,  newWidthHeigt,  newWidthHeigt); // Position and size the label
-    // layout->addWidget(pinCodeEdit);
-    // layout->addWidget(submitButton);
 
   //  setLayout(layout);
      setFixedSize(400, 320);
@@ -87,6 +83,7 @@ void PinCodeWindow::saveAttendanceRecord(const QString &rollNumber,const QString
         QMessageBox::warning(this, "File Error", "Failed to open attendance.dat file for writing.");
         return;
     }
+    // qDebug() << isattendanceexist("82");
     if(!isattendanceexist(rollNumber)){
         QDateTime currentDateTime = QDateTime::currentDateTime();
         AttendanceRecord record;
@@ -123,8 +120,10 @@ bool PinCodeWindow::isattendanceexist(const QString &rollNumber){
             Attendance tattendance;
             tattendance.load(in1);
             if(tattendance.rollNumber==rollNumber&&currentDateTime.date().year()==tattendance.year&&currentDateTime.date().month()==tattendance.mon&&currentDateTime.date().day()==tattendance.day)
+            {
                 file1.close();
-            return true;
+                return true;
+            }
             }
         file1.close();
         return false;

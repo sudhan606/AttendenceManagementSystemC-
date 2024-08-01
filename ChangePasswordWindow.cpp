@@ -18,9 +18,6 @@ ChangePasswordWindow::ChangePasswordWindow(QWidget *parent)
     // this->setObjectName("mainWindow");
     this->setStyleSheet(winstyle);
     run();//All layout are here.....defined at last of this file
-    // QVBoxLayout *layout = new QVBoxLayout(this);
-    // usernameEdit->setPlaceholderText("Enter Username");
-    // currentPasswordEdit->setPlaceholderText("Enter Current Password");
     currentPasswordEdit->setEchoMode(QLineEdit::Password);
     // newPasswordEdit->setPlaceholderText("Enter New Password");
     newPasswordEdit->setEchoMode(QLineEdit::Password);
@@ -32,11 +29,6 @@ ChangePasswordWindow::ChangePasswordWindow(QWidget *parent)
     //QPixmap scaledPixmap = pixmap.scaled(newWidth, newHeight, Qt::KeepAspectRatio);  // Scale the pixmap
     imageLabel1->setPixmap(pixmap1);  // Set the scaled pixmap on the label
     imageLabel1->setGeometry(20, 10,  newWidthHeigt,  newWidthHeigt); // Position and size the label
-    // layout->addWidget(usernameEdit);
-    // layout->addWidget(currentPasswordEdit);
-    // layout->addWidget(newPasswordEdit);
-    // layout->addWidget(confirmPasswordEdit);
-    // layout->addWidget(changePasswordButton);
 
     connect(changePasswordButton, &QPushButton::clicked, this, &ChangePasswordWindow::onChangePasswordButtonClicked);
 
@@ -73,8 +65,6 @@ void ChangePasswordWindow::onChangePasswordButtonClicked() {
 }
 
 bool ChangePasswordWindow::authenticateUser(const QString &username, const QString &password) {
-    // Implement your authentication logic here, e.g., check against a database or hardcoded values
-    // For demonstration purposes, let's assume username "admin" and password "admin" are valid
     QFile file("password.dat");
     if (!file.open(QIODevice::ReadOnly)) {
         return false; // Assuming file does not exist means no duplicates
@@ -94,9 +84,6 @@ bool ChangePasswordWindow::authenticateUser(const QString &username, const QStri
 }
 
 void ChangePasswordWindow::saveNewPassword(const QString &newPassword) {
-    // Implement code to save the new password, e.g., update database or file
-    // For demonstration purposes, let's assume we update the password directly here
-    // Note: In a real application, you should securely hash and store passwords
     login loginPassword;
     loginPassword.password=newPassword;
     loginPassword.userName="admin";
