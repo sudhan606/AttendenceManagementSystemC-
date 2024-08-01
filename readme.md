@@ -13,6 +13,7 @@ ATTENDER (A Students Attendance Management System) is a robust application devel
 ## Screenshots
 
 ![Main Window](screenshots/SS1.png)
+![Admin Window](screenshots/SS4.png)
 
 ## Getting Started
 
