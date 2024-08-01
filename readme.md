@@ -35,8 +35,8 @@ To install Qt 6, follow these steps:
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/yourusername/attendance-management-system.git
-   cd attendance-management-system
+   git clone https://github.com/sudhan606/Attender
+   cd Attender
 ### Open the project in Qt Creator or any other IDE that supports C++ and Qt.
 
 ### Build and run the project:
